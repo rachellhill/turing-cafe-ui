@@ -29,8 +29,7 @@ class App extends Component {
       headers: {
         'Content-Type': 'application/json'
       }
-    })
-      .then(response => response.json())
+    }).then(response => response.json())
       .then(data => this.setState({ reservations: [...this.state.reservations, newReservation] })
     )
   }
@@ -41,7 +40,7 @@ class App extends Component {
     fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
       method: 'DELETE'
     })
-      .then(() => this.setState({ reservations: filteredReservations }))
+    .then(() => this.setState({ reservations: filteredReservations }))
   }
 
   render() {

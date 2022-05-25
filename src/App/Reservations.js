@@ -3,7 +3,6 @@ import ResyCard from './ResyCard'
 import './Reservations.css'
 
 const Reservations = ({reservations, deleteReservation }) => {
-  console.log(reservations)
 
   const cards = reservations.map(reservation => {
     return (

@@ -32,7 +32,6 @@ class Form extends Component {
 
   render() {
     return (
-
       <form>
         <input
           className='form__input-name'
@@ -42,7 +41,6 @@ class Form extends Component {
           value={this.state.name}
           onChange={event => this.handleChange(event)}
         />
-
         <input
           className='form__input-date'
           type='date'
@@ -51,7 +49,6 @@ class Form extends Component {
           value={this.state.date}
           onChange={event => this.handleChange(event)}
         />
-
         <input
           className='form__input-time'
           type='time'
@@ -60,7 +57,6 @@ class Form extends Component {
           value={this.state.time}
           onChange={event => this.handleChange(event)}
         />
-
         <input
           className='form__input-number'
           type='number'
@@ -69,9 +65,7 @@ class Form extends Component {
           value={this.state.number}
           onChange={event => this.handleChange(event)}
         />
-
         <button className='make-reservation-btn' onClick={event => this.submitReservation(event)}>Make Reservation</button>
-
       </form>
     )
   }
