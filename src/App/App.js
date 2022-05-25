@@ -18,7 +18,30 @@ class App extends Component {
   }
 
   addReservation = (newReservation) => {
-    this.setState({ reservations: [...this.state.reservations, newReservation] })
+    fetch('http://localhost:3001/api/v1/reservations', {
+      method: 'POST',
+      body: JSON.stringify({
+        "name": newReservation.name,
+        "date": newReservation.date,
+        "time": newReservation.time,
+        "number": newReservation.number
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => this.setState({ reservations: [...this.state.reservations, newReservation] })
+    )
+  }
+
+  deleteReservation = (id) => {
+    const filteredReservations = this.state.reservations.filter(reservation => reservation.id !== id)
+
+    fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
+      method: 'DELETE'
+    })
+      .then(() => this.setState({ reservations: filteredReservations }))
   }
 
   render() {
@@ -29,7 +52,7 @@ class App extends Component {
           <Form addReservation={this.addReservation}/>
         </div>
 
-        <Reservations reservations={this.state.reservations}/>
+        <Reservations reservations={this.state.reservations} deleteReservation={this.deleteReservation}/>
       </div>
     )
   }

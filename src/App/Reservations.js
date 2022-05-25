@@ -2,17 +2,19 @@ import React from 'react';
 import ResyCard from './ResyCard'
 import './Reservations.css'
 
-const Reservations = ({reservations}) => {
+const Reservations = ({reservations, deleteReservation }) => {
   console.log(reservations)
 
   const cards = reservations.map(reservation => {
     return (
       <ResyCard
         key={reservation.id}
+        id={reservation.id}
         name={reservation.name}
         date={reservation.date}
         time={reservation.time}
         number={reservation.number}
+        deleteReservation={deleteReservation}
       />
     )
   })
